@@ -8,14 +8,15 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node initdb && nodemon server",
-    "build": "node initdb.js"
+    "build": "node initdb.js",
+    "preinstall": "npm cache clean --force && npm cache verify",
+    "prepare": "npm set fetch-retries 5 && npm set fetch-retry-mintimeout 100000 && npm set fetch-retry-maxtimeout 600000 && npm set network-timeout 300000 && npm ci --prefer-offline"
   },
-  "nodemonConfig": {
-    "ignore": [
-      "mockdb/*",
-      "db/*",
-      "storage/*"
-    ]
+  "config": {
+    "fetch-retries": 5,
+    "fetch-retry-mintimeout": 100000,
+    "fetch-retry-maxtimeout": 600000,
+    "network-timeout": 300000
   },
   "keywords": [],
   "license": "ISC",
