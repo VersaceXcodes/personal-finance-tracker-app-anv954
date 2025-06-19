@@ -7,20 +7,36 @@
     "dev": "concurrently \"cd vitereact && npm i --legacy-peer-deps && npm run dev\" \"cd backend && npm i && npm run start\"",
     "clean": "npm cache clean --force && npm cache verify",
     "preinstall": "npm run clean",
-    "prepare": "npm set fetch-retries 5 && npm set fetch-retry-mintimeout 100000 && npm set fetch-retry-maxtimeout 600000 && npm set network-timeout 300000 && npm ci --prefer-offline"
+    "prepare": "npm set fetch-retries 5 && npm set fetch-retry-mintimeout 100000 && npm set fetch-retry-maxtimeout 600000 && npm set network-timeout 300000 && npm ci --prefer-offline",
+    "verify": "npm audit signatures && npm verify"
   },
   "config": {
     "fetch-retries": 5,
     "fetch-retry-mintimeout": 100000,
     "fetch-retry-maxtimeout": 600000,
-    "network-timeout": 300000
+    "network-timeout": 300000,
+    "registry": "https://registry.npmjs.org/",
+    "strict-ssl": true,
+    "package-lock": true
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "8.2.2"
   },
   "devDependencies": {
-    "@flydotio/dockerfile": "^0.7.8"
+    "@flydotio/dockerfile": "0.7.8"
+  },
+  "resolutions": {
+    "supports-color": "8.1.1",
+    "yargs": "17.7.2",
+    "rxjs": "7.8.1",
+    "date-fns": "2.30.0"
+  },
+  "overrides": {
+    "supports-color": "8.1.1",
+    "yargs": "17.7.2",
+    "rxjs": "7.8.1",
+    "date-fns": "2.30.0"
   }
 }
